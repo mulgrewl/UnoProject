@@ -1,4 +1,4 @@
 package JJCoolL.arcade.Exceptions;
 
-public class InvalidNumberOfPlayersException implements Exception {
+public class InvalidNumberOfPlayersException extends Exception {
 }

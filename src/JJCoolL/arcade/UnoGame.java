@@ -1,11 +1,12 @@
 package JJCoolL.arcade;
 
 
-import JJCoolL.arcade.Exceptions.InsufficientFundsException;
 import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
-import JJCoolL.arcade.Exceptions.NoCardInPositionException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class UnoGame  {
@@ -13,41 +14,31 @@ public class UnoGame  {
     String gameName; //removed parameters from here JTK & moved from constructor to field
     String gameState; //added a gameState
     int balance; //moved from constructor to field
-    Deck draw; //creating a new deck
-    Deck discard;
-    private ArrayList<Player> playerList;
+    Draw draw; //creating a new deck to draw from
+    Discard discard; // Takes played cards
+    private ArrayList<Player> playerList; // creates array list to store players in
+
 
 
     public UnoGame() {
 
-        draw = new Deck();
-        discard = new Deck();
-        this.playerList = new ArrayList<Player>(10);
+        draw = new Draw ();
+        discard = new Discard ();
+        this.playerList = new ArrayList<>(10);
 
         // pop 7 from stack - get player.length, for every player, pop 7 to player.hand
         //pop 1 card to discard stack
 
     }
 
+    void startGame() throws InvalidNumberOfPlayersException  {
+        if (playerList.size() < 1) { throw new InvalidNumberOfPlayersException();
+    } if (playerList.size() > 9) { throw new InvalidNumberOfPlayersException();
+
     UnoGame unoGame = new UnoGame();
 
-    void startRound() {
-        Collections.shuffle(deck);
-        {
-            Iterator it = Player.player.iterator();
-            while (it.hasNext())
-                for (int i = 0; i < 7; i++) {
-                    i = Deck.draw.pop();
-                    Deck.hand.add(i);
-                }
-        }
-        discard.push(Deck.draw.pop());
-    }
-
-
-
     String getGameName(){
-        return gameName;// i added a return for this method JTK
+        return gameName; // i added a return for this method JTK
     }
 
     int getBalance(){
@@ -58,40 +49,45 @@ public class UnoGame  {
         ++balance;
     }
 
+
     String getGameState(){
         return gameState;
     }
 
-    void startGame() throws InvalidNumberOfPlayersException {
-
+    void startRound() {
+        Collections.shuffle(draw);
+        {
+            Iterator it = playerList.iterator();
+            while (it.hasNext())
+                for (int i = 0; i < 7; i++) {
+                    i = Draw.draw.pop();
+                    Draw.hand.add(i);
+                }
+        }
+        discard.push(Draw.draw.pop());
     }
 
-
-
-    void endGame(){
-
-    }
 
     // String sendCommand(Command command) throws InvalidCommandException{
 
     // }
 
-    void addPlayer(String name) throws NoCardInPositionException {
+    void addPlayer(String name) throws InvalidNumberOfPlayersException {
         if (balance < 2) {
-            throw new NoCardInPositionException("not enough coins inserted, try again."); // needs changing
+            throw new InvalidNumberOfPlayersException(); // needs changing
         } else {
             Player player = new Player(name);
-            this.playerList.add(player); // Lists all players of UnoGame by name JT
+            this.playerList.add(player); // adds all players of UnoGame by name JT
         }
     }
 
 
     void removePlayer(Player player) {
-
+        this.playerList.remove(player); // removes player by name JT
     }
 
     List<Player> getPlayers(){
-        return this.playerList;
+        return this.playerList; // Lists all players of game - JT
     }
 
     // String getScoreboard(){
@@ -108,7 +104,7 @@ public class UnoGame  {
 
     // void passCard ();
 
-    // Player currentPlayer (Player newplayer);
+    // Player currentPlayer (Player new player);
 
     // Player nextPlayer (currentPlayer);
 
@@ -118,5 +114,9 @@ public class UnoGame  {
 
 
     // }
+
+    void endGame(){
+
+    }
 
 }

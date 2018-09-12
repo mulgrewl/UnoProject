@@ -3,15 +3,16 @@ package JJCoolL.arcade.tests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import JJCoolL.arcade.Draw;
 
 import static org.junit.Assert.assertEquals;
 
-public class DeckTest {
+public class DrawTest {
 private Draw draw;
     /**
      * Default constructor for test class DeckTest
      */
-    public DeckTest()
+    public DrawTest()
     {
     }
 
@@ -40,10 +41,10 @@ private Draw draw;
     public void testNewDeckLength()
     {
         //Creates new deck object - JT
-        Draw draw = new Draw();
+     //   Draw draw = new Draw();
         //Test length of deck - JT
         int expectedLength = 76;
-        int actualLength = deck.getLength();
+        int actualLength = draw.getLength();
         assertEquals(expectedLength, actualLength);
     }
 

@@ -2,7 +2,7 @@ package JJCoolL.arcade;
 
 import java.util.Stack;
 
-public class Deck {
+public class Draw {
 
     private static Stack<Card> draw;
 
@@ -10,7 +10,7 @@ public class Deck {
  * Constructor for objects of class Deck
  * Instantiates a new deck object and assignes cards into deck object
  */
-public Deck()
+public Draw()
         {
         this.draw=new Stack<>();
         for(Colour currentColour:Colour.values()){

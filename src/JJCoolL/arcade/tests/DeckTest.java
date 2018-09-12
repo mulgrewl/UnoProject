@@ -1,17 +1,13 @@
 package JJCoolL.arcade.tests;
 
-import java.util.Stack;
-import java.util.EmptyStackException;
-
-import static org.junit.Assert.*;
-
-import JJCoolL.arcade.Deck;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DeckTest {
+import static org.junit.Assert.assertEquals;
 
+public class DeckTest {
+private Draw draw;
     /**
      * Default constructor for test class DeckTest
      */
@@ -44,7 +40,7 @@ public class DeckTest {
     public void testNewDeckLength()
     {
         //Creates new deck object - JT
-        Deck deck = new Deck();
+        Draw draw = new Draw();
         //Test length of deck - JT
         int expectedLength = 76;
         int actualLength = deck.getLength();

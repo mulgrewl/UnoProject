@@ -1,11 +1,11 @@
 package JJCoolL.arcade;
 
 
+import JJCoolL.arcade.Exceptions.InsufficientFundsException;
 import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -31,9 +31,14 @@ public class UnoGame  {
 
     }
 
-    void startGame() throws InvalidNumberOfPlayersException  {
-        if (playerList.size() < 1) { throw new InvalidNumberOfPlayersException();
-    } if (playerList.size() > 9) { throw new InvalidNumberOfPlayersException();
+    void startGame() throws InvalidNumberOfPlayersException {
+        if (playerList.size() < 1  ) {
+            throw new InvalidNumberOfPlayersException();
+        }
+        if (playerList.size() > 9) {
+            throw new InvalidNumberOfPlayersException();
+        }
+    }
 
     UnoGame unoGame = new UnoGame();
 
@@ -41,13 +46,13 @@ public class UnoGame  {
         return gameName; // i added a return for this method JTK
     }
 
+        public void insertCoin() {
+            ++balance;
+        }
+
     int getBalance(){
         return balance;
     }    // i added a get balance method JTK
-
-    public void insertCoin() {
-        ++balance;
-    }
 
 
     String getGameState(){
@@ -55,15 +60,16 @@ public class UnoGame  {
     }
 
     void startRound() {
+
         Collections.shuffle(draw);
-        {
-            Iterator it = playerList.iterator();
-            while (it.hasNext())
-                for (int i = 0; i < 7; i++) {
-                    i = Draw.draw.pop();
-                    Draw.hand.add(i);
-                }
+
+        // for each player give seven cards
+
+        for (Player player: playerList) {
+            Card card = draw.takeTopCard();
+            player.getHand().addCard(card);
         }
+
         discard.push(Draw.draw.pop());
     }
 
@@ -72,9 +78,9 @@ public class UnoGame  {
 
     // }
 
-    void addPlayer(String name) throws InvalidNumberOfPlayersException {
+    void addPlayer(String name) throws InsufficientFundsException {
         if (balance < 2) {
-            throw new InvalidNumberOfPlayersException(); // needs changing
+            throw new InsufficientFundsException("Insert more coins"); // needs changing
         } else {
             Player player = new Player(name);
             this.playerList.add(player); // adds all players of UnoGame by name JT
@@ -82,11 +88,11 @@ public class UnoGame  {
     }
 
 
-    void removePlayer(Player player) {
-        this.playerList.remove(player); // removes player by name JT
+    void removePlayer(String name) {
+        this.playerList.remove(name); // removes player by name JT
     }
 
-    List<Player> getPlayers(){
+    List<Player> getPlayers () {
         return this.playerList; // Lists all players of game - JT
     }
 

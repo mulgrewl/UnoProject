@@ -22,8 +22,8 @@ public class UnoGame  {
 
     public UnoGame() {
 
-        draw = new Deck();
-        discard = new Deck();
+        draw = new Draw ();
+        discard = new Discard ();
         this.playerList = new ArrayList<>(10);
 
         // pop 7 from stack - get player.length, for every player, pop 7 to player.hand

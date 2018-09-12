@@ -1,6 +1,6 @@
 package JJCoolL.arcade;
 
-import group_1_name.arcade.TextGame;
+import JJCoolJ.arcade.TextGame;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -75,7 +75,7 @@ public class ArcadeMachine {
     /**
      * Prints out the arcade's help message.
      */
-    private void printArcadeHelpMessage() {
+    /*private void printArcadeHelpMessage() {
         System.out.println("Arcade Commands:");
         System.out.println("arcade help            : help using the arcade");
         System.out.println("selectGame <game name> : select a given game");
@@ -89,30 +89,30 @@ public class ArcadeMachine {
         System.out.println("");
         System.out.println("Game Commands: ");
         if (currentGame != null) {
-            System.out.println(currentGame.getHelp());
+       //   System.out.println(currentGame.getHelp());
         } else {
             System.out.println("No game selected. Select a game for game-specific commands.");
         }
     }
 
-    /**
+  /*  /**
      * @return A string showing which game is being played.
-     */
+
     private String getStatus() {
         if (currentGame == null) {
             return "No game selected.";
         } else {
-            return "Currently playing: " + currentGame.getGameName();
+           return "Currently playing: " + currentGame.getGameName();
         }
     }
-}
+} */
 
- /*   /**
-     * @param command
-     * @throws InvalidCommandException
-     * @throws InsufficientFundsException
-     * @throws InvalidNumberOfPlayersException
-     */
+            /*   /**
+             * @param command
+             * @throws InvalidCommandException
+             * @throws InsufficientFundsException
+             * @throws InvalidNumberOfPlayersException
+             */
   /*private void runCommand(Command command) throws InvalidCommandException, InsufficientFundsException, InvalidNumberOfPlayersException {
         if (command.fullCommandString().equals("arcade help")) {
             // Arcade help message.
@@ -136,5 +136,7 @@ public class ArcadeMachine {
         }
     }
 
-*/}
+*/
+        }
+    }
 }

@@ -14,9 +14,9 @@ public class UnoGame  {
     String gameName; //removed parameters from here JTK & moved from constructor to field
     String gameState; //added a gameState
     int balance; //moved from constructor to field
-    Deck draw; //creating a new deck
-    Deck discard;
-    private ArrayList<Player> playerList;
+    Draw draw; //creating a new deck to draw from
+    Discard discard; // Takes played cards
+    private ArrayList<Player> playerList; // creates array list to store players in
 
 
 
@@ -31,13 +31,14 @@ public class UnoGame  {
 
     }
 
-    void startGame() throws InvalidNumberOfPlayersException {
+    void startGame() throws InvalidNumberOfPlayersException  {
+        if (playerList.size() < 1) { throw new InvalidNumberOfPlayersException();
+    } if (playerList.size() > 9) { throw new InvalidNumberOfPlayersException();
 
-    }
     UnoGame unoGame = new UnoGame();
 
     String getGameName(){
-        return gameName;// i added a return for this method JTK
+        return gameName; // i added a return for this method JTK
     }
 
     int getBalance(){
@@ -49,24 +50,21 @@ public class UnoGame  {
     }
 
 
-
-
-
     String getGameState(){
         return gameState;
     }
 
     void startRound() {
-        Collections.shuffle(deck);
+        Collections.shuffle(draw);
         {
             Iterator it = playerList.iterator();
             while (it.hasNext())
                 for (int i = 0; i < 7; i++) {
-                    i = Deck.draw.pop();
-                    Deck.hand.add(i);
+                    i = Draw.draw.pop();
+                    Draw.hand.add(i);
                 }
         }
-        discard.push(Deck.draw.pop());
+        discard.push(Draw.draw.pop());
     }
 
 

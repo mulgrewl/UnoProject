@@ -12,7 +12,7 @@ public class Deck {
  */
 public Deck()
         {
-        this.draw=new Stack<>();
+        draw=new Stack<>();
         for(Colour currentColour:Colour.values()){
         for(int i=1;i<=9;i++){
         Card newCard=new Card(i,currentColour);

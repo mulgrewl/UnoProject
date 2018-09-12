@@ -22,19 +22,17 @@ public class PlayerTest {
     /**
      * Default constructor for test class TestPlayer
      */
-    public PlayerTest()
-    {
+    public PlayerTest() {
     }
 
     /**
      * Sets up the test fixture.
-     *
+     * <p>
      * Called before every test case method.
      */
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         player = new Player("Joe");
 
         card = new Card(9, Colour.YELLOW);
@@ -45,17 +43,15 @@ public class PlayerTest {
 
     /**
      * Tears down the test fixture.
-     *
+     * <p>
      * Called after every test case method.
      */
     @After
-    public void tearDown()
-    {
+    public void tearDown() {
     }
 
     @Test
-    public void testEmptyHand()
-    {
+    public void testEmptyHand() {
         player = new Player("Joe");
 
         int expectedSize = 0;
@@ -65,7 +61,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void testHand(){
+    public void testHand() {
         player = new Player("Joe");
 
         player.getHand().addCard(card);

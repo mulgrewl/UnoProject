@@ -5,8 +5,14 @@ import java.util.Stack;
 public class Discard {
     private static Stack<Card> discard;
 
-    public Discard(){
+    public Discard() {
 
-        this.discard=new Stack<>();
+        this.discard = new Stack<>();
+    }
+
+    public void addCard(Card card) {
+        discard.push(card);
+
+
     }
 }

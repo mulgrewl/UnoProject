@@ -29,6 +29,14 @@ public class Draw {
         public int getLength() {
                 return draw.size();
         }
+        public Card takeTopCard(){
+           Card card = draw.pop();
+            return card;
+
+
+
+
+        }
 }
         // // Write the method for this class below this line
 

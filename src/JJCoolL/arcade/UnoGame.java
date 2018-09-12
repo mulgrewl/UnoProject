@@ -9,13 +9,13 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class UnoGame  {
+public class UnoGame implements TextGame {
 
-    String gameName; //removed parameters from here JTK & moved from constructor to field
-    String gameState; //added a gameState
-    int balance; //moved from constructor to field
-    Draw draw; //creating a new deck to draw from
-    Discard discard; // Takes played cards
+    private String gameName; //removed parameters from here JTK & moved from constructor to field
+    private String gameState; //added a gameState
+    private int balance; //moved from constructor to field
+    private Draw draw; //creating a new deck to draw from
+    private Discard discard; // Takes played cards
     private ArrayList<Player> playerList; // creates array list to store players in
 
 
@@ -63,20 +63,19 @@ public class UnoGame  {
 
         Collections.shuffle(draw);
 
-        // for each player give seven cards
 
         for (Player player: playerList) {
             Card card = draw.takeTopCard();
             player.getHand().addCard(card);
         }
 
-        discard.push(Draw.draw.pop());
+        discard.push(Draw.pop());
     }
 
 
-    // String sendCommand(Command command) throws InvalidCommandException{
+    String sendCommand(Command command) throws InvalidCommandException{
 
-    // }
+     }
 
     void addPlayer(String name) throws InsufficientFundsException {
         if (balance < 2) {
@@ -96,14 +95,17 @@ public class UnoGame  {
         return this.playerList; // Lists all players of game - JT
     }
 
-    // String getScoreboard(){
+    String getScoreboard(){
+        return null;
+     }
 
-    // }
+    String getHelp(){
+        return null;
+    }
 
-    //String getHelp();
 
-    // List<Deck> seeHand(currentPlayer) {
-    // List<Deck> hand = new ArrayList<Deck>();
+    // List<Hand> seeHand(currentPlayer) {
+    // List<Hand> hand = new ArrayList<Hand>();
 
 
     // void playCard ( int x, String y );

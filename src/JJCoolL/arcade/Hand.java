@@ -16,8 +16,8 @@ public class Hand
     public ArrayList <Card> hand;
 
     /**
-     * Constructor for objects of class Hand
-     */
+ * Constructor for objects of class Hand
+ */
     public Hand()
     {
         // write code to initialise instance variables

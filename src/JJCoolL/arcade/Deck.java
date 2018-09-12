@@ -31,17 +31,17 @@ public int getLength(){
         return draw.size();
         }
         // // Write the method for this class below this line
-        // public int pop(){
-        // return 0;
-        // }
+        public int pop(){
+         return 0;
+        }
 
-        // public int peek(){
-        // return 0;
-        // }
+        public int peek(){
+        return 0;
+         }
 
-        // public void clear(){
+         public void clear(){
 
-        // }
+         }
         }
 
 

@@ -16,7 +16,7 @@ public class Player {
         return this.name;
     }
 
-    public Hand addHand(){
+    public Hand getHand(){
         return this.hand;
 
     }

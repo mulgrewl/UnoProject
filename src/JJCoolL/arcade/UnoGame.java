@@ -24,11 +24,8 @@ public class UnoGame implements TextGame {
         draw = new Draw ();
         discard = new Discard ();
         this.playerList = new ArrayList<>(10);
-
-        // To Do: pop 7 from stack - get player.length, for every player, pop 7 to player.hand
-        //pop 1 card to discard stack
-
     }
+
     public void insertCoin() {
         ++balance;
     }
@@ -37,8 +34,9 @@ public class UnoGame implements TextGame {
         return balance;
     }
 
-    public String getGameName(){
-        return gameName; // i added a return for this method JTK
+    @Override
+    public String getGameName(String name) {
+        return name;
     }
 
     public void addPlayer(String name) throws InsufficientFundsException {
@@ -49,7 +47,6 @@ public class UnoGame implements TextGame {
             this.playerList.add(player); // adds all players of UnoGame by name JT
         }
     }
-
 
     public void removePlayer(String name) {
         this.playerList.remove(name); // removes player by name JT
@@ -69,30 +66,33 @@ public class UnoGame implements TextGame {
         }
     }
 
-
     public String getGameState(){
         return gameState;
     }
 
     void startRound() {
 
-        Collections.shuffle(draw);
-
-
         for (Player player: playerList) {
             Card card = draw.takeTopCard();
             player.getHand().addCard(card);
         }
 
-        discard.push(Draw.pop());
+        discard.addCard(draw.takeTopCard());
     }
 
-    List<Hand> seeHand(currentPlayer) {
-        return this.Hand;
+    /**
+     * Current player to see own hand
+     * @return
+     */
+    Hand seeMyHand(int currentPlayerIndex) {
+        Player player;
+        player = playerList.get(currentPlayerIndex);
+        return player.getHand();
     }
 
 
     void playCard(int x, String y) {
+    //remove card form position x in hand and add to discard pile
 
     }
 
@@ -100,16 +100,15 @@ public class UnoGame implements TextGame {
     //Skip player upon command
     }
 
-    Player currentPlayer() {
-        return null;
+    Player whoPlaysNext() {
+        return null; // determines who's go it is next.
     }
 
-    Player nextPlayer(currentPlayer) {
-        return null;
-    }
 
-    int getPlayerHandSize(Player hand) {
-        return this.hand();
+    int getPlayerHandSize(int currentPlayerIndex) {
+        Player player;
+        player = playerList.get(currentPlayerIndex);
+        return player.getHand().numberOfCards();
     }
 
     String winGame() {
@@ -123,7 +122,6 @@ public class UnoGame implements TextGame {
     public void endGame() {
 
     }
-
 
     public String sendCommand(Command command) throws InvalidCommandException {
         return null;

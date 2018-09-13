@@ -86,7 +86,7 @@ public class HandTest
 
         assertEquals(3, hand.numberOfCards());
 
-        hand.removeCard(2);
+       hand.removeCard(2);
         assertEquals(2, hand.numberOfCards());
 
         hand.removeCard(1);

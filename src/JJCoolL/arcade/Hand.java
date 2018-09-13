@@ -34,17 +34,18 @@ public class Hand
         this.hand.add(card);
     }
 
-    public void removeCard(int position) throws NoCardInPositionException {
+    public Card removeCard(int position) throws NoCardInPositionException {
         Card removedCard;
         if(position < 0) {
             throw new NoCardInPositionException("no card at this position");
         }
-        if (position < numberOfCards()) {
+        if (position > numberOfCards()) {
             throw new NoCardInPositionException("no card at this position");
 
         }else{
             removedCard = this.hand.remove(position);
-            addCard(removedCard);
+            return removedCard;
+           //discard.addCard(removedCard);
             // add to discard pile using addtopile method from Discard
 
 

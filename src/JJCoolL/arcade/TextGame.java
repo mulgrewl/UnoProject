@@ -1,10 +1,10 @@
 package JJCoolL.arcade;
 
-import Exceptions.InsufficientFundsException;
-import Exceptions.InvalidCommandException;
-import Exceptions.InvalidNumberOfPlayersException;
-import group_1_name.arcade.model.Command;
-import group_1_name.arcade.model.Player;
+import JJCoolL.arcade.Exceptions.InsufficientFundsException;
+import JJCoolL.arcade.Exceptions.InvalidCommandException;
+import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
+import JJCoolL.arcade.Command;
+import JJCoolL.arcade.Player;
 
 import java.util.List;
 

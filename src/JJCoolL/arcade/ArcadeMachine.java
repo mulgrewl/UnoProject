@@ -1,6 +1,10 @@
 package JJCoolL.arcade;
 
 import JJCoolJ.arcade.TextGame;
+import JJCoolL.arcade.Exceptions.InsufficientFundsException;
+import JJCoolL.arcade.Exceptions.InvalidCommandException;
+import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
+import JJCoolL.arcade.Exceptions.NoCardInPositionException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +21,7 @@ import java.util.Map;
 
 //Not Yet Updated
 
-public class ArcadeMachine {
+    public class ArcadeMachine {
     private Map<String, TextGame> availableGames;
     private TextGame currentGame;
 
@@ -54,7 +58,7 @@ public class ArcadeMachine {
             System.out.print(">>> ");
             String commandString = br.readLine();
 
-           /* Command command = new Command(commandString);
+           Command command = new Command(commandString);
             if (command.fullCommandString().equals("exit")) {
                 break;
             } else {
@@ -75,7 +79,8 @@ public class ArcadeMachine {
     /**
      * Prints out the arcade's help message.
      */
-    /*private void printArcadeHelpMessage() {
+
+    private void printArcadeHelpMessage() {
         System.out.println("Arcade Commands:");
         System.out.println("arcade help            : help using the arcade");
         System.out.println("selectGame <game name> : select a given game");
@@ -89,15 +94,15 @@ public class ArcadeMachine {
         System.out.println("");
         System.out.println("Game Commands: ");
         if (currentGame != null) {
-       //   System.out.println(currentGame.getHelp());
+         System.out.println(currentGame.getHelp());
         } else {
             System.out.println("No game selected. Select a game for game-specific commands.");
         }
     }
 
-  /*  /**
+    /**
      * @return A string showing which game is being played.
-
+     */
     private String getStatus() {
         if (currentGame == null) {
             return "No game selected.";
@@ -105,15 +110,15 @@ public class ArcadeMachine {
            return "Currently playing: " + currentGame.getGameName();
         }
     }
-} */
 
-            /*   /**
+
+               /**
              * @param command
              * @throws InvalidCommandException
              * @throws InsufficientFundsException
              * @throws InvalidNumberOfPlayersException
              */
-  /*private void runCommand(Command command) throws InvalidCommandException, InsufficientFundsException, InvalidNumberOfPlayersException {
+  private void runCommand(Command command) throws InvalidCommandException, InsufficientFundsException, InvalidNumberOfPlayersException {
         if (command.fullCommandString().equals("arcade help")) {
             // Arcade help message.
             printArcadeHelpMessage();
@@ -136,7 +141,6 @@ public class ArcadeMachine {
         }
     }
 
-*/
+
         }
-    }
-}
+

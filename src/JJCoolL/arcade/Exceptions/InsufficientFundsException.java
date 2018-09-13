@@ -3,7 +3,14 @@ package JJCoolL.arcade.Exceptions;
 public class InsufficientFundsException extends Exception {
 
 
-    public InsufficientFundsException(String errorMessage) {
-        super(errorMessage);
+    public InsufficientFundsException() {
+
+    }
+    public InsufficientFundsException(String message) {
+        super(message);
+    }
+
+    public InsufficientFundsException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

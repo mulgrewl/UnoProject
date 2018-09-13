@@ -18,7 +18,7 @@ import java.util.List;
  */
 public interface TextGame {
 
-    String getGameName();
+    String getGameName(String  name);
 
     void insertCoin();
 

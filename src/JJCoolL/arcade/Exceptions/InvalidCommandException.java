@@ -1,12 +1,12 @@
 package JJCoolL.arcade.Exceptions;
 
-public class InvalidCommandException extends Throwable {}
+public class InvalidCommandException extends Throwable {
 
     public InvalidCommandException(String message) {
         super(message);
     }
 
-    public InvalidCommandException e(String message, Throwable cause) {
+    public InvalidCommandException (String message, Throwable cause) {
         super(message, cause);
     }
 }

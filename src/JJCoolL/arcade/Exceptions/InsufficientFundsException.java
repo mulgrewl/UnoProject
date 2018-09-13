@@ -10,7 +10,7 @@ public class InsufficientFundsException extends Exception {
         super(message);
     }
 
-    public InsufficientFundsException e (String message, Throwable cause) {
+    public InsufficientFundsException (String message, Throwable cause) {
         super (message, cause);
     }
 }

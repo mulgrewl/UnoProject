@@ -126,7 +126,7 @@ import java.util.Map;
             // Selecting a game within the arcade.
             String[] commandParts = command.getParts();
             if (commandParts.length != 2) {
-                throw new InvalidCommandException();
+                throw new InvalidCommandException("Type help for valid commands.");
             }
 
             String selectedGameName = commandParts[1];

@@ -10,49 +10,47 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Hand
-{
+public class Hand {
     // define instance variables here
-    public ArrayList <Card> hand;
+    public ArrayList<Card> hand;
 
     /**
- * Constructor for objects of class Hand
- */
-    public Hand()
-    {
+     * Constructor for objects of class Hand
+     */
+    public Hand() {
         // write code to initialise instance variables
         this.hand = new ArrayList<>(7);
 
     }
 
-    public int numberOfCards(){
+    public int numberOfCards() {
         return hand.size();
     }
     // Write the method for this class below this line
 
-    public void addCard(Card card){
+    public void addCard(Card card) {
         this.hand.add(card);
     }
 
     public Card removeCard(int position) throws NoCardInPositionException {
         Card removedCard;
-        if(position < 0) {
+        if (position < 0) {
             throw new NoCardInPositionException("no card at this position");
         }
         if (position > numberOfCards()) {
             throw new NoCardInPositionException("no card at this position");
 
-        }else{
+        } else {
             removedCard = this.hand.remove(position);
             return removedCard;
-           //discard.addCard(removedCard);
+            //discard.addCard(removedCard);
             // add to discard pile using addtopile method from Discard
 
 
         }
     }
 
-    public ArrayList<Card> Hand(){
+    public ArrayList<Card> Hand() {
         return hand;
     }
 }

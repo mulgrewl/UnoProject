@@ -12,7 +12,8 @@ import java.util.ArrayList;
  */
 public class Hand {
     // define instance variables here
-    public ArrayList<Card> hand;
+    private ArrayList<Card> hand;
+    private Card card;
 
     /**
      * Constructor for objects of class Hand
@@ -49,12 +50,19 @@ public class Hand {
 
         }
     }
-    public Colour getColourOfRemovedCard (){
 
-        Colour colourOfRemovedCard = removeCard( int position).getColour();
+   /* public Colour getColourOfRemovedCard() {
+        Card card;
+        Colour colourOfRemovedCard = removeCard(position).getColour();
         return colourOfRemovedCard;
 
     }
+
+    public int getNumberOfRemovedCard() {
+        int numberOfRemovedCard = removeCard(int position).getNumber();
+        return numberOfRemovedCard;
+
+    }*/
 
     public ArrayList<Card> Hand() {
         return hand;

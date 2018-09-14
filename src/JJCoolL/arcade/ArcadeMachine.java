@@ -1,6 +1,6 @@
 package JJCoolL.arcade;
 
-import JJCoolJ.arcade.TextGame;
+//import JJCoolJ.arcade.TextGame;
 import JJCoolL.arcade.Exceptions.InsufficientFundsException;
 import JJCoolL.arcade.Exceptions.InvalidCommandException;
 import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
@@ -54,11 +54,11 @@ import java.util.Map;
         while (true) {
             System.out.println("");
             System.out.println("------");
-            System.out.println("Game status: " + getStatus());
+          //  System.out.println("Game status: " + getStatus());
             System.out.print(">>> ");
             String commandString = br.readLine();
 
-           Command command = new Command(commandString);
+    /*      Command command = new Command(commandString);
             if (command.fullCommandString().equals("exit")) {
                 break;
             } else {
@@ -72,10 +72,9 @@ import java.util.Map;
                 } catch (InvalidNumberOfPlayersException e) {
                     System.out.println("Cannot start the game with the current number of players.");
                 }
-            }
+            }*/
         }
     }
-
     /**
      * Prints out the arcade's help message.
      */
@@ -103,11 +102,11 @@ import java.util.Map;
     /**
      * @return A string showing which game is being played.
      */
-    private String getStatus() {
+   private String getStatus() {
         if (currentGame == null) {
             return "No game selected.";
         } else {
-           return "Currently playing: " + currentGame.getGameName();
+          return null; // return "Currently playing: " + currentGame.getGameName();
         }
     }
 
@@ -118,7 +117,7 @@ import java.util.Map;
              * @throws InsufficientFundsException
              * @throws InvalidNumberOfPlayersException
              */
-  private void runCommand(Command command) throws InvalidCommandException, InsufficientFundsException, InvalidNumberOfPlayersException {
+ private void runCommand(Command command) throws InvalidCommandException, InsufficientFundsException, InvalidNumberOfPlayersException {
         if (command.fullCommandString().equals("arcade help")) {
             // Arcade help message.
             printArcadeHelpMessage();
@@ -139,7 +138,7 @@ import java.util.Map;
             // Otherwise, if not an arcade command, pass the command to the game.
             currentGame.sendCommand(command);
         }
-    }
+     }
 
 
         }

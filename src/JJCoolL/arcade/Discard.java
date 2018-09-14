@@ -54,5 +54,18 @@ public class Discard {
         int numberOfTopCard = peakAtCard().getNumber();
         return numberOfTopCard;
     }
+        public boolean canCardBePlayed(Card otherCard) {
+           Card topCard = peakAtCard();
+            if( topCard.getColour() ==  otherCard.getColour()) {
+                return true;
+            }
+        else if ( topCard.getNumber() == otherCard.getNumber()){
+            return true;
+            }
+
+            else {
+                return false;
+            }
+    }
 }
 

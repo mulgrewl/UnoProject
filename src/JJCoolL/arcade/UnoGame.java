@@ -3,7 +3,7 @@ package JJCoolL.arcade;
 
 import JJCoolL.arcade.Exceptions.InsufficientFundsException;
 import JJCoolL.arcade.Exceptions.InvalidCommandException;
-import JJCoolL.arcade.Exceptions.InvalidMoveException;
+//import JJCoolL.arcade.Exceptions.InvalidMoveException;
 import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
 
 import java.util.ArrayList;
@@ -95,16 +95,19 @@ public class UnoGame implements TextGame {
      * @return
      */
 
-    int getPlayerHandSize(int currentPlayerIndex) {
+   public int getPlayerHandSize(int currentPlayerIndex) {
         Player player;
         player = playerList.get(currentPlayerIndex);
         return player.getHand().numberOfCards();
     }
 
+    public int getNumberOfPlayers() {
+        return this.playerList.size();
+    }
 
-    void playCard(int x, String y) throws InvalidMoveException {
+   /* void playCard(int x, String y) throws InvalidMoveException {
         //remove card form position x in hand and add to discard pile
-        for (this.playerList) {
+    (    for (this.playerList) {
 
 
             if (removeCard != discard.TopCard.colour || removeCard != discard.TopCard x )
@@ -124,15 +127,15 @@ public class UnoGame implements TextGame {
 
         {break}
     }
-
-    void passCard(int currentPlayerIndex String command) {
+*/
+   /* void passCard(int currentPlayerIndex String command) {
     //Skip player upon command
         if (currentPlayerIndex)
         {command ("Pass") == true
         switch player;
         }
 
-    }
+    }*/
 
     Player whoPlaysNext() {
         // determines who's go it is next.
@@ -143,8 +146,8 @@ public class UnoGame implements TextGame {
 
 
     String winGame(Player name) {
-        if (Player.handsize < 0 && Player.callUno)
-        System.out.println("Congratulations" + Player.getName) + "You've won this round!");
+      /*  if (Player.handsize < 0 && Player.callUno)
+        System.out.println("Congratulations" + Player.getName) + "You've won this round!");*/
         return null;
     }
 

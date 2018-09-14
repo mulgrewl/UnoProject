@@ -2,9 +2,13 @@ package JJCoolL.arcade;
 
 import java.util.Stack;
 
+/**
+ * This class will create and hold the discard pile ( or the play pile) which will enable the game to check if the card
+ * the player selects to play matches the top card of  the discard pile. LM
+ */
 public class Discard {
     private static Stack<Card> discard;
-    //private Card card;
+    private Card card;
 
     public Discard() {
 
@@ -38,7 +42,17 @@ public class Discard {
      */
     public Card peakAtCard() {
         Card topCard = discard.peek();
+
         return topCard;
+    }
+
+    public Colour getColourOfTopCard() {
+        Colour colourOfTopCard = peakAtCard().getColour();
+    return colourOfTopCard;
+    }
+    public int getNumberOfTopCard() {
+        int numberOfTopCard = peakAtCard().getNumber();
+        return numberOfTopCard;
     }
 }
 

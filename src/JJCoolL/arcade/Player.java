@@ -1,10 +1,14 @@
 package JJCoolL.arcade;
 
+/**
+ * the Player class will create a new player whenever the constructor is called, this player will have a
+ * new hand and a name LM
+ *
+ */
 public class Player {
 
     private Hand hand;
     private String name;
-    // private Discard discard;
     private Discard topCard;
     private Discard discard;
 

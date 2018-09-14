@@ -15,6 +15,13 @@ public class Card
         this.cardNumber = cardNumber;
         this.cardColour = cardColour;
     }
+    public Colour getColour(){
+     return this.cardColour;
+    }
+    public int getNumber(){
+        return this.cardNumber;
+    }
+
 }
 
 //No Updated Needed

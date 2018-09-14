@@ -49,6 +49,12 @@ public class Hand {
 
         }
     }
+    public Colour getColourOfRemovedCard (){
+
+        Colour colourOfRemovedCard = removeCard( int position).getColour();
+        return colourOfRemovedCard;
+
+    }
 
     public ArrayList<Card> Hand() {
         return hand;

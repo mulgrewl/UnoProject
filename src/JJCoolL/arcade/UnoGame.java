@@ -3,10 +3,10 @@ package JJCoolL.arcade;
 
 import JJCoolL.arcade.Exceptions.InsufficientFundsException;
 import JJCoolL.arcade.Exceptions.InvalidCommandException;
+import JJCoolL.arcade.Exceptions.InvalidMoveException;
 import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -34,14 +34,14 @@ public class UnoGame implements TextGame {
         return balance;
     }
 
-    @Override
+
     public String getGameName(String name) {
         return name;
     }
 
     public void addPlayer(String name) throws InsufficientFundsException {
         if (balance < 2) {
-            throw new InsufficientFundsException("Insert more coins"); // needs changing
+            throw new InsufficientFundsException("Insert more coins");
         } else {
             Player player = new Player(name);
             this.playerList.add(player); // adds all players of UnoGame by name JT
@@ -71,7 +71,7 @@ public class UnoGame implements TextGame {
     }
 
     void startRound() {
-
+        //call the deck
         for (Player player: playerList) {
             Card card = draw.takeTopCard();
             player.getHand().addCard(card);
@@ -90,20 +90,10 @@ public class UnoGame implements TextGame {
         return player.getHand();
     }
 
-
-    void playCard(int x, String y) {
-    //remove card form position x in hand and add to discard pile
-
-    }
-
-    void passCard() {
-    //Skip player upon command
-    }
-
-    Player whoPlaysNext() {
-        return null; // determines who's go it is next.
-    }
-
+    /**
+     * Current player to see other players hand
+     * @return
+     */
 
     int getPlayerHandSize(int currentPlayerIndex) {
         Player player;
@@ -111,7 +101,50 @@ public class UnoGame implements TextGame {
         return player.getHand().numberOfCards();
     }
 
-    String winGame() {
+
+    void playCard(int x, String y) throws InvalidMoveException {
+        //remove card form position x in hand and add to discard pile
+        for (this.playerList) {
+
+
+            if (removeCard != discard.TopCard.colour || removeCard != discard.TopCard x )
+            {
+                throw new InvalidMoveException("You can't play that card! Choose another.");
+            }
+
+        else if (removeCard == discard.TopCard.colour || removeCard == discard.TopCard x)
+            {
+                discard.addCard(Card card);
+            }
+
+        else player.draw.TopCard && passCard();
+        }
+
+        if (this.playerList.handsize < 0 && Player.callUno())
+
+        {break}
+    }
+
+    void passCard(int currentPlayerIndex String command) {
+    //Skip player upon command
+        if (currentPlayerIndex)
+        {command ("Pass") == true
+        switch player;
+        }
+
+    }
+
+    Player whoPlaysNext() {
+        // determines who's go it is next.
+
+
+        return null;
+    }
+
+
+    String winGame(Player name) {
+        if (Player.handsize < 0 && Player.callUno)
+        System.out.println("Congratulations" + Player.getName) + "You've won this round!");
         return null;
     }
 

@@ -25,8 +25,9 @@ public class Discard {
      * LM
      * @param removedCard
      */
-    public void playCardFromHand(Card removedCard) {
+    public Card playCardFromHand(Card removedCard) {
         discard.push(removedCard);
+        return removedCard;
 
     }
 

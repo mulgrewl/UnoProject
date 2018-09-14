@@ -1,7 +1,7 @@
 package JJCoolL.arcade;
 
 /**
- * Write a description of class Card here.
+ * The class Card will hold the variables of cardNumber and cardColour.
  *
  * @author (your name)
  * @version (a version number or a date)

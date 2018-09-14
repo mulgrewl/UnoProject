@@ -6,6 +6,7 @@ public class Player {
     private String name;
     // private Discard discard;
     private Discard topCard;
+    private Discard discard;
 
 
     public Player(String name) {
@@ -28,6 +29,10 @@ public class Player {
         return newTopCard;
     }
 
+    public Card playSelectedCard(Card removedCard) {
+        Card selectedCard = discard.playCardFromHand(removedCard);
+        return selectedCard;
+    }
 }
 
 // public static void createPlayer() {

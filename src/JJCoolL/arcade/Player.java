@@ -1,4 +1,7 @@
+
 package JJCoolL.arcade;
+import JJCoolL.arcade.Exceptions.InvalidMoveException;
+import JJCoolL.arcade.Exceptions.NoCardInPositionException;
 
 /**
  * the Player class will create a new player whenever the constructor is called, this player will have a
@@ -33,11 +36,18 @@ public class Player {
         return newTopCard;
     }
 
-    public Card playSelectedCard(Card removedCard) {
-        Card selectedCard = discard.playCardFromHand(removedCard);
-        return selectedCard;
+    public Card playSelectedCard(int position) throws InvalidMoveException, NoCardInPositionException {
+
+        if (discard.canCardBePlayed(position) == true) {
+            hand.removeCard(position).discard.addCard(position) ;
+
+        }
+        return null;
+
     }
-}
+
+
+    }
 
 // public static void createPlayer() {
 

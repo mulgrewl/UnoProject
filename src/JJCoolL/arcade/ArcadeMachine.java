@@ -58,9 +58,9 @@ import java.util.Map;
             System.out.print(">>> ");
             String commandString = br.readLine();
 
-    /*      Command command = new Command(commandString);
+          Command command = new Command(/*commandString*/);
             if (command.fullCommandString().equals("exit")) {
-                break;
+
             } else {
                 try {
                     runCommand(command);
@@ -71,8 +71,9 @@ import java.util.Map;
                     printArcadeHelpMessage();
                 } catch (InvalidNumberOfPlayersException e) {
                     System.out.println("Cannot start the game with the current number of players.");
+                    break;
                 }
-            }*/
+            }
         }
     }
     /**

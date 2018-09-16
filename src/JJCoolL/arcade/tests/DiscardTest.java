@@ -1,6 +1,7 @@
 package JJCoolL.arcade.tests;
 
 import JJCoolL.arcade.*;
+import JJCoolL.arcade.Exceptions.InvalidMoveException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class DiscardTest {
     }
 
     @Test
-    public void testCanCardWithSameNumberBePlayed() {
+    public void testCanCardWithSameNumberBePlayed() throws InvalidMoveException {
         Card card = new Card(5, Colour.RED);
         Card card2 = new Card(5, Colour.BLUE);
 
@@ -54,7 +55,7 @@ public class DiscardTest {
     }
 
     @Test
-    public void testCanCardWithSameColourBePlayed() {
+    public void testCanCardWithSameColourBePlayed() throws InvalidMoveException {
         Card card = new Card(1, Colour.BLUE);
         Card card2 = new Card (2, Colour.BLUE);
 
@@ -64,7 +65,7 @@ public class DiscardTest {
 
     }
     @Test
-    public void testCardCannotBePlayed() {
+    public void testCardCannotBePlayed() throws InvalidMoveException {
         Card card = new Card(1, Colour.BLUE);
         Card card2 = new Card ( 2, Colour.RED);
 

@@ -1,12 +1,11 @@
 package JJCoolL.arcade.tests;
 
-import JJCoolL.arcade.Card;
-import JJCoolL.arcade.Colour;
-import JJCoolL.arcade.Hand;
+import JJCoolL.arcade.*;
+import JJCoolL.arcade.Exceptions.InvalidMoveException;
+import JJCoolL.arcade.Exceptions.NoCardInPositionException;
 
 import static org.junit.Assert.*;
 
-import JJCoolL.arcade.Player;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +17,8 @@ public class PlayerTest {
     private Card card2;
     private Card card3;
     private Player player;
+    private Discard discard;
+    private Draw draw;
 
     /**
      * Default constructor for test class TestPlayer
@@ -33,11 +34,17 @@ public class PlayerTest {
 
     @Before
     public void setUp() {
+        draw = new Draw();
+        discard = new Discard();
+
+
         player = new Player("Joe");
 
         card = new Card(9, Colour.YELLOW);
         card2 = new Card(8, Colour.YELLOW);
         card3 = new Card(7, Colour.YELLOW);
+        discard.addCard(card2);
+
 
     }
 
@@ -52,7 +59,7 @@ public class PlayerTest {
 
     @Test
     public void testEmptyHand() {
-        player = new Player("Joe");
+        // player = new Player("Joe");
 
         int expectedSize = 0;
         int actualSize = player.getHand().numberOfCards();
@@ -62,7 +69,7 @@ public class PlayerTest {
 
     @Test
     public void testHand() {
-        player = new Player("Joe");
+        // player = new Player("Joe");
 
         player.getHand().addCard(card);
         player.getHand().addCard(card2);
@@ -73,4 +80,15 @@ public class PlayerTest {
         assertEquals(expectedSizes, actualSizes);
     }
 
+    @Test
+    public void playSelectedCard() throws InvalidMoveException, NoCardInPositionException {
+
+      //draw.takeTopCard());
+        player.playSelectedCard(card);
+        int expectedSize = 2;
+        int actualSize = player.getHand().numberOfCards();
+        assertEquals(expectedSize, actualSize);
+
+    }
 }
+

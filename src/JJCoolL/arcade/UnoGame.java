@@ -20,10 +20,11 @@ public class UnoGame implements TextGame {
     private ArrayList<Player> playerList; // creates array list to store players in
 
     public UnoGame() {
-        UnoGame unoGame = new UnoGame();
+       // UnoGame unoGame = new UnoGame();
         draw = new Draw ();
         discard = new Discard ();
         this.playerList = new ArrayList<>(10);
+
     }
 
     public void insertCoin() {
@@ -71,6 +72,7 @@ public class UnoGame implements TextGame {
     }
 
     void startRound() {
+
         //call the deck
         for (Player player: playerList) {
             Card card = draw.takeTopCard();
@@ -105,9 +107,17 @@ public class UnoGame implements TextGame {
         return this.playerList.size();
     }
 
-   /* void playCard(int x, String y) throws InvalidMoveException {
+   /* boolean playCard(int position) throws InvalidMoveException {
+
+        Hand hand;
+
+        if (removeCard().CanBePlayed() == true) {
+            return true;
+        }
+    }
+*/
         //remove card form position x in hand and add to discard pile
-    (    for (this.playerList) {
+    /*(    for (this.playerList) {
 
 
             if (removeCard != discard.TopCard.colour || removeCard != discard.TopCard x )

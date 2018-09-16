@@ -49,7 +49,7 @@ import java.util.Map;
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
 
-        System.out.println("Welcome to <Team Name>'s Arcade!");
+        System.out.println("Welcome to JJCoolL's Arcade!");
 
         while (true) {
             System.out.println("");

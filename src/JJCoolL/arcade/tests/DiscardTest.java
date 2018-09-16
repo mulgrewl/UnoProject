@@ -44,6 +44,14 @@ public class DiscardTest {
     }
 
     @Test
+    public void peakAtCard() {
+        Card card = new Card(5, Colour.RED);
+        discard.addCard(card);
+
+        assertTrue(discard.peakAtCard() == card);
+
+    }
+    @Test
     public void testCanCardWithSameNumberBePlayed() throws InvalidMoveException {
         Card card = new Card(5, Colour.RED);
         Card card2 = new Card(5, Colour.BLUE);

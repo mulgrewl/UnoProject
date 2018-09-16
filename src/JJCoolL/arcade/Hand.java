@@ -33,10 +33,8 @@ public class Hand {
         this.hand.add(card);
     }
 
-    public Card removeCard(int position) throws NoCardInPositionException {
-         //int position = hand.indexOf(selectedCard);
-
-
+    public Card removeCard(Card selectedCard) throws NoCardInPositionException {
+        int position = hand.indexOf(selectedCard);
 
 
         if (position < 0) {
@@ -53,10 +51,11 @@ public class Hand {
 
         }
     }
-    public Card getCardAtPosition(int index){
-      Card selectedCard =  hand.get(index);
-        return selectedCard;
-}
+  //  public int getCardAtPosition(Card otherCard){
+     // int selectedCard =  hand.get(Card otherCard);
+
+     //   return selectedCard;
+//}
    /* public Colour getColourOfRemovedCard() {
         Card card;
         Colour colourOfRemovedCard = removeCard(position).getColour();

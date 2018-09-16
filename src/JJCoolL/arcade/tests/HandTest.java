@@ -11,26 +11,23 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class HandTest
-{
+public class HandTest {
     private Hand hand;
     private Card card;
     private Card card2;
     private Card card3;
 
 
-    public HandTest()
-    {
+    public HandTest() {
     }
 
     /**
      * Sets up the test fixture.
-     *
+     * <p>
      * Called before every test case method.
      */
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         card = new Card(9, Colour.YELLOW);
         card2 = new Card(8, Colour.YELLOW);
         card3 = new Card(7, Colour.YELLOW);
@@ -39,17 +36,15 @@ public class HandTest
 
     /**
      * Tears down the test fixture.
-     *
+     * <p>
      * Called after every test case method.
      */
     @After
-    public void tearDown()
-    {
+    public void tearDown() {
     }
 
     @Test
-    public void checkNewHand()
-    {
+    public void checkNewHand() {
         int expectedSize = 0;
         int actualSize = hand.numberOfCards();
 
@@ -57,7 +52,7 @@ public class HandTest
     }
 
     @Test
-    public void addCardToHand(){
+    public void addCardToHand() {
         hand.addCard(card);
 
         int expectedSize = 1;
@@ -67,7 +62,7 @@ public class HandTest
     }
 
     @Test
-    public void addMultipleCardsToHand(){
+    public void addMultipleCardsToHand() {
         hand.addCard(card);
         assertEquals(1, hand.numberOfCards());
 
@@ -79,49 +74,50 @@ public class HandTest
     }
 
     @Test
-    public void removeCard()throws NoCardInPositionException {
+    public void removeCard() throws NoCardInPositionException {
         hand.addCard(card);
         hand.addCard(card2);
         hand.addCard(card3);
 
         assertEquals(3, hand.numberOfCards());
 
-       hand.removeCard(2);
+        hand.removeCard(card);
         assertEquals(2, hand.numberOfCards());
 
-        hand.removeCard(1);
+        hand.removeCard(card2);
         assertEquals(1, hand.numberOfCards());
 
-        hand.removeCard(0);
+        hand.removeCard(card3);
         assertEquals(0, hand.numberOfCards());
     }
+}
 
-    @Test
+ /* @Test
     public void removeCardFromEmptySlot() throws NoCardInPositionException{
-        hand.addCard(card);
-        hand.addCard(card2);
+     hand.addCard(card);
+      hand.addCard(card2);
 
         assertEquals(2, hand.numberOfCards());
 
-        hand.removeCard(5);
+       hand.removeCard(5);
         assertEquals(2, hand.numberOfCards());
-    }
+    }*/
 
-    @Test
-    public void positionTooSmall()throws NoCardInPositionException{
-        boolean isThrown;
-        isThrown = false;
-        try{
-            hand.removeCard(-1);
-        }
-        catch(NoCardInPositionException e)
-        {isThrown = true;
-        }
-        assertTrue (isThrown);
-
-    }
-    @Test
-    public void positionNotInHand() throws NoCardInPositionException{
+    //@Test
+   // public void positionTooSmall()throws NoCardInPositionException{
+    //    boolean isThrown;
+//        isThrown = false;
+//        try{
+//            hand.removeCard(-1);
+//        }
+//        catch(NoCardInPositionException e)
+//        {isThrown = true;
+//        }
+//        assertTrue (isThrown);
+//
+//    }
+   // @Test
+    /*public void positionNotInHand() throws NoCardInPositionException{
         boolean isThrown;
         isThrown = false;
         hand.addCard(card);
@@ -136,8 +132,8 @@ public class HandTest
         }
         assertTrue (isThrown);
 
-    }
-}
+    }*/
+
 
 //Updated
 

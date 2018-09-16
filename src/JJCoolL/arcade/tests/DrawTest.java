@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import JJCoolL.arcade.Draw;
 
+import java.util.Stack;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
@@ -16,6 +18,7 @@ public class DrawTest {
     private Draw draw;
     private Player player;
     private UnoGame unoGame;
+    //private static Stack<Card> draw;
 
     /**
      * Default constructor for test class DeckTest
@@ -33,6 +36,7 @@ public class DrawTest {
 
     @Before
     public void setUp() {
+
         draw = new Draw();
         player = new Player("Joe");
         player = new Player("Lucy");
@@ -62,6 +66,16 @@ public class DrawTest {
         Card card = draw.takeTopCard();
         Card card1 = draw.takeTopCard();
         assertTrue (card != card1);
+
+
+    }
+    @Test
+    public void testTopCard() {
+
+        Card topCard = draw.takeTopCard();
+        int expectedLength = 75;
+        int actualLength = draw.getLength();
+      assertEquals(expectedLength, actualLength);
 
 
     }

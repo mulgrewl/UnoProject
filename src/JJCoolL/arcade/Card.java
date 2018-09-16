@@ -24,10 +24,10 @@ public class Card
     public int getNumber() {
         return this.cardNumber;
     }
-        public Hand getHand(){
-            return this.hand;
+       // public Hand getHand(){
+         //   return this.hand;
         }
-    }
+
 
 
 

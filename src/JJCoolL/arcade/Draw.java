@@ -8,7 +8,7 @@ public class Draw {
 
     /**
      * Constructor for objects of class Deck
-     * Instantiates a new deck object and assignes cards into deck object
+     * Instantiates a new deck object and assignes cards into deck object to create the Uno deck.
      */
     public Draw() {
         this.draw = new Stack<>();
@@ -28,6 +28,10 @@ public class Draw {
      //   draw = draw.shuffleCards();
     }
 
+    /**
+     * the getLength method
+     * @return draw.size()
+     */
     public int getLength() {
         return draw.size();
     }

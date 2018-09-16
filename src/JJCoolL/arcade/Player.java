@@ -36,10 +36,12 @@ public class Player {
         return newTopCard;
     }
 
-    public Card playSelectedCard(int position) throws InvalidMoveException, NoCardInPositionException {
+    public Card playSelectedCard(Card card) throws InvalidMoveException, NoCardInPositionException {
 
-        if (discard.canCardBePlayed(position) == true) {
-            hand.removeCard(position).discard.addCard(position) ;
+
+        if (discard.canCardBePlayed(card) == true) {
+            //get cards position then
+            hand.removeCard(card).discard.addCard(card) ;
 
         }
         return null;

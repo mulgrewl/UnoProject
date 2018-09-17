@@ -18,9 +18,10 @@ public class UnoGame implements TextGame {
     private Draw draw; //creating a new deck to draw from
     private Discard discard; // Takes played cards
     private ArrayList<Player> playerList; // creates array list to store players in
+    private int currentPlayer;
 
     public UnoGame() {
-        UnoGame unoGame = new UnoGame();
+        //UnoGame unoGame = new UnoGame();
         draw = new Draw ();
         discard = new Discard ();
         this.playerList = new ArrayList<>(10);
@@ -33,7 +34,6 @@ public class UnoGame implements TextGame {
     int getBalance(){
         return balance;
     }
-
 
     public String getGameName(String name) {
         return name;
@@ -72,12 +72,15 @@ public class UnoGame implements TextGame {
 
     void startRound() {
         //call the deck
-        for (Player player: playerList) {
-            Card card = draw.takeTopCard();
-            player.getHand().addCard(card);
+
+        for (int i=0; i < 7; i++){
+            for (Player player: playerList) {
+                Card card = draw.takeTopCard();
+                player.getHand().addCard(card);
+            }
         }
 
-        discard.addCard(draw.takeTopCard());
+        //discard.addCard(draw.takeTopCard());
     }
 
     /**
@@ -95,7 +98,7 @@ public class UnoGame implements TextGame {
      * @return
      */
 
-   public int getPlayerHandSize(int currentPlayerIndex) {
+    public int getPlayerHandSize(int currentPlayerIndex) {
         Player player;
         player = playerList.get(currentPlayerIndex);
         return player.getHand().numberOfCards();
@@ -105,48 +108,57 @@ public class UnoGame implements TextGame {
         return this.playerList.size();
     }
 
-   /* void playCard(int x, String y) throws InvalidMoveException {
-        //remove card form position x in hand and add to discard pile
-    (    for (this.playerList) {
+    // void passCard(int currentPlayerIndex , String command) {
+    // //Skip player upon command
+    // if (currentPlayerIndex)
+    // {command ("Pass") = true;
 
+    // }
 
-            if (removeCard != discard.TopCard.colour || removeCard != discard.TopCard x )
-            {
-                throw new InvalidMoveException("You can't play that card! Choose another.");
-            }
+    // }
 
-        else if (removeCard == discard.TopCard.colour || removeCard == discard.TopCard x)
-            {
-                discard.addCard(Card card);
-            }
-
-        else player.draw.TopCard && passCard();
-        }
-
-        if (this.playerList.handsize < 0 && Player.callUno())
-
-        {break}
-    }
-*/
-   /* void passCard(int currentPlayerIndex String command) {
-    //Skip player upon command
-        if (currentPlayerIndex)
-        {command ("Pass") == true
-        switch player;
-        }
-
-    }*/
-
-    Player whoPlaysNext() {
+    Player getCurrentPlayer() {
         // determines who's go it is next.
+        return playerList.get(currentPlayer);
+    }
 
+    // void goToNextPlayer(){
 
-        return null;
+    // for(currentPlayer = 0; currentPlayer < getNumberOfPlayers(); currentPlayer++) {
+    // if (currentPlayer == getNumberOfPlayers()){
+    // currentPlayer = 0;
+    // continue;
+    // }
+    // currentPlayer++;
+
+    // }
+
+    // }
+
+    void goToNextPlayer(){
+        while(currentPlayer < getNumberOfPlayers()) {
+            for(currentPlayer = 0; currentPlayer < getNumberOfPlayers(); currentPlayer++){
+                //currentPlayer++;
+                System.out.println("" + currentPlayer);
+            }
+            if (currentPlayer == getNumberOfPlayers()){
+                currentPlayer = 0;
+
+            }
+        }
+    }
+
+    public Card playSelectedCard(Card card) throws InvalidMoveException {
+        Player player;
+        if(discard.canCardBePlayed(card) == true) {
+            player.getHand().removeCard(card).discard.addCard(card);
+        }
+        return card;
     }
 
 
     String winGame(Player name) {
-      /*  if (Player.handsize < 0 && Player.callUno)
+        /*  if (Player.handsize < 0 && Player.callUno)
         System.out.println("Congratulations" + Player.getName) + "You've won this round!");*/
         return null;
     }

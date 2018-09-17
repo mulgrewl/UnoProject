@@ -16,8 +16,6 @@ public class UnoGame implements TextGame {
     private Draw draw; //creating a new deck to draw from
     private Discard discard; // Takes played cards
     private ArrayList<Player> playerList; // creates array list to store players in
-    
-
 
     public UnoGame() {
         // UnoGame unoGame = new UnoGame();
@@ -117,18 +115,14 @@ public class UnoGame implements TextGame {
 
 
     public void playSelectedCard(Card card) throws InvalidMoveException, NoCardInPositionException {
-        playSelectedCard(card).discard.addCard(card);
-
-
-        // int position = hand.indexOf(selectedCard);
+       // int position = hand.indexOf(selectedCard);
         // position to card conversion here
 
-
-       if (discard.canCardBePlayed(card) == true) {
+        if (discard.canCardBePlayed(card) == true) {
 
         //Player currentPlayer = getPlayerIndex(currentPlayerIndex);
             // player.getHand()
-          removeCard(card)discard.addCard(card);
+            currentPlayer.getHand().removeCard(card)discard.addCard(card);
 
         }
         //return null;

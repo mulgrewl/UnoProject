@@ -1,8 +1,10 @@
 package JJCoolL.arcade;
 
 
-import JJCoolL.arcade.Exceptions.*;
+import JJCoolL.arcade.Exceptions.InsufficientFundsException;
+import JJCoolL.arcade.Exceptions.InvalidCommandException;
 //import JJCoolL.arcade.Exceptions.InvalidMoveException;
+import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,23 +18,22 @@ public class UnoGame implements TextGame {
     private Draw draw; //creating a new deck to draw from
     private Discard discard; // Takes played cards
     private ArrayList<Player> playerList; // creates array list to store players in
+    private int currentPlayer;
 
     public UnoGame() {
-        // UnoGame unoGame = new UnoGame();
-        draw = new Draw();
-        discard = new Discard();
+        //UnoGame unoGame = new UnoGame();
+        draw = new Draw ();
+        discard = new Discard ();
         this.playerList = new ArrayList<>(10);
-
     }
 
     public void insertCoin() {
         ++balance;
     }
 
-    int getBalance() {
+    int getBalance(){
         return balance;
     }
-
 
     public String getGameName(String name) {
         return name;
@@ -57,7 +58,7 @@ public class UnoGame implements TextGame {
 
     //Determines if game has enough players to begin -JT
     public void startGame() throws InvalidNumberOfPlayersException {
-        if (playerList.size() < 1) {
+        if (playerList.size() < 1  ) {
             throw new InvalidNumberOfPlayersException();
         }
         if (playerList.size() > 9) {
@@ -65,24 +66,25 @@ public class UnoGame implements TextGame {
         }
     }
 
-    public String getGameState() {
+    public String getGameState(){
         return gameState;
     }
 
     void startRound() {
-
         //call the deck
-        for (Player player : playerList) {
-            Card card = draw.takeTopCard();
-            player.getHand().addCard(card);
+
+        for (int i=0; i < 7; i++){
+            for (Player player: playerList) {
+                Card card = draw.takeTopCard();
+                player.getHand().addCard(card);
+            }
         }
 
-        discard.addCard(draw.takeTopCard());
+        //discard.addCard(draw.takeTopCard());
     }
 
     /**
      * Current player to see own hand
-     *
      * @return
      */
     Hand seeMyHand(int currentPlayerIndex) {
@@ -93,7 +95,6 @@ public class UnoGame implements TextGame {
 
     /**
      * Current player to see other players hand
-     *
      * @return
      */
 
@@ -144,38 +145,53 @@ public class UnoGame implements TextGame {
                 discard.addCard(Card card);
             }
 
-        else player.draw.TopCard && passCard();
-        }
-
-        if (this.playerList.handsize < 0 && Player.callUno())
-
-        {break}
-    }
-*/
-   /* void passCard(int currentPlayerIndex String command) {
-    //Skip player upon command
-        if (currentPlayerIndex)
-        {command ("Pass") == true
-        switch player;
-        }
-
-    }*/
-
-    Player whoPlaysNext() {
+    Player getCurrentPlayer() {
         // determines who's go it is next.
+        return playerList.get(currentPlayer);
+    }
 
+    // void goToNextPlayer(){
 
-        return null;
+    // for(currentPlayer = 0; currentPlayer < getNumberOfPlayers(); currentPlayer++) {
+    // if (currentPlayer == getNumberOfPlayers()){
+    // currentPlayer = 0;
+    // continue;
+    // }
+    // currentPlayer++;
+
+    // }
+
+    // }
+
+    void goToNextPlayer(){
+        while(currentPlayer < getNumberOfPlayers()) {
+            for(currentPlayer = 0; currentPlayer < getNumberOfPlayers(); currentPlayer++){
+                //currentPlayer++;
+                System.out.println("" + currentPlayer);
+            }
+            if (currentPlayer == getNumberOfPlayers()){
+                currentPlayer = 0;
+
+            }
+        }
+    }
+
+    public Card playSelectedCard(Card card) throws InvalidMoveException {
+        Player player;
+        if(discard.canCardBePlayed(card) == true) {
+            player.getHand().removeCard(card).discard.addCard(card);
+        }
+        return card;
     }
 
 
     String winGame(Player name) {
-      /*  if (Player.handsize < 0 && Player.callUno)
+        /*  if (Player.handsize < 0 && Player.callUno)
         System.out.println("Congratulations" + Player.getName) + "You've won this round!");*/
         return null;
     }
 
-    public String getScoreboard() {
+    public String getScoreboard(){
         return null;
     }
 
@@ -187,7 +203,7 @@ public class UnoGame implements TextGame {
         return null;
     }
 
-    public String getHelp() {
+    public String getHelp(){
         return null;
     }
 

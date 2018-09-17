@@ -1,10 +1,8 @@
 package JJCoolL.arcade;
 
 
-import JJCoolL.arcade.Exceptions.InsufficientFundsException;
-import JJCoolL.arcade.Exceptions.InvalidCommandException;
+import JJCoolL.arcade.Exceptions.*;
 //import JJCoolL.arcade.Exceptions.InvalidMoveException;
-import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +16,13 @@ public class UnoGame implements TextGame {
     private Draw draw; //creating a new deck to draw from
     private Discard discard; // Takes played cards
     private ArrayList<Player> playerList; // creates array list to store players in
+    
+
 
     public UnoGame() {
-       // UnoGame unoGame = new UnoGame();
-        draw = new Draw ();
-        discard = new Discard ();
+        // UnoGame unoGame = new UnoGame();
+        draw = new Draw();
+        discard = new Discard();
         this.playerList = new ArrayList<>(10);
 
     }
@@ -31,7 +31,7 @@ public class UnoGame implements TextGame {
         ++balance;
     }
 
-    int getBalance(){
+    int getBalance() {
         return balance;
     }
 
@@ -59,7 +59,7 @@ public class UnoGame implements TextGame {
 
     //Determines if game has enough players to begin -JT
     public void startGame() throws InvalidNumberOfPlayersException {
-        if (playerList.size() < 1  ) {
+        if (playerList.size() < 1) {
             throw new InvalidNumberOfPlayersException();
         }
         if (playerList.size() > 9) {
@@ -67,14 +67,14 @@ public class UnoGame implements TextGame {
         }
     }
 
-    public String getGameState(){
+    public String getGameState() {
         return gameState;
     }
 
     void startRound() {
 
         //call the deck
-        for (Player player: playerList) {
+        for (Player player : playerList) {
             Card card = draw.takeTopCard();
             player.getHand().addCard(card);
         }
@@ -84,6 +84,7 @@ public class UnoGame implements TextGame {
 
     /**
      * Current player to see own hand
+     *
      * @return
      */
     Hand seeMyHand(int currentPlayerIndex) {
@@ -94,29 +95,48 @@ public class UnoGame implements TextGame {
 
     /**
      * Current player to see other players hand
+     *
      * @return
      */
 
-   public int getPlayerHandSize(int currentPlayerIndex) {
+    public int getPlayerHandSize(int currentPlayerIndex) {
         Player player;
         player = playerList.get(currentPlayerIndex);
         return player.getHand().numberOfCards();
+    }
+
+    public Player getPlayerIndex(int currentPlayerIndex) {
+        Player player = playerList.get(currentPlayerIndex);
+        return player;
     }
 
     public int getNumberOfPlayers() {
         return this.playerList.size();
     }
 
-   /* boolean playCard(int position) throws InvalidMoveException {
 
-        Hand hand;
 
-        if (removeCard().CanBePlayed() == true) {
-            return true;
+    public void playSelectedCard(Card card) throws InvalidMoveException, NoCardInPositionException {
+        playSelectedCard(card).discard.addCard(card);
+
+
+        // int position = hand.indexOf(selectedCard);
+        // position to card conversion here
+
+
+       if (discard.canCardBePlayed(card) == true) {
+
+        //Player currentPlayer = getPlayerIndex(currentPlayerIndex);
+            // player.getHand()
+          removeCard(card)discard.addCard(card);
+
         }
+        //return null;
+
     }
-*/
-        //remove card form position x in hand and add to discard pile
+
+
+    //remove card form position x in hand and add to discard pile
     /*(    for (this.playerList) {
 
 
@@ -161,7 +181,7 @@ public class UnoGame implements TextGame {
         return null;
     }
 
-    public String getScoreboard(){
+    public String getScoreboard() {
         return null;
     }
 
@@ -173,7 +193,7 @@ public class UnoGame implements TextGame {
         return null;
     }
 
-    public String getHelp(){
+    public String getHelp() {
         return null;
     }
 

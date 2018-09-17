@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Hand {
     // define instance variables here
-    private ArrayList<Card> hand;
+    public ArrayList<Card> hand;
     private Card card;
 
     /**

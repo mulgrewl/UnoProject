@@ -13,12 +13,14 @@ public class Player {
     private Hand hand;
     private String name;
     private Discard topCard;
-    private Discard discard;
+    public Discard discard;
 
 
     public Player(String name) {
         this.name = name;
         this.hand = new Hand();
+       // discard = new Discard();
+
 
     }
 
@@ -36,20 +38,19 @@ public class Player {
         return newTopCard;
     }
 
-    public Card playSelectedCard(Card card) throws InvalidMoveException, NoCardInPositionException {
+ public Card playSelectedCard(Card card) throws InvalidMoveException, NoCardInPositionException {
 
 
         if (discard.canCardBePlayed(card) == true) {
-            //get cards position then
-            hand.removeCard(card).discard.addCard(card) ;
-
+           //get cards position then
+          hand.removeCard(card);
         }
-        return null;
+        return card;
 
     }
 
 
-    }
+
 
 // public static void createPlayer() {
 

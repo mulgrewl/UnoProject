@@ -35,15 +35,17 @@ public class PlayerTest {
     @Before
     public void setUp() {
         draw = new Draw();
-        discard = new Discard();
+        //discard = new Discard();
 
 
         player = new Player("Joe");
 
+
+
         card = new Card(9, Colour.YELLOW);
         card2 = new Card(8, Colour.YELLOW);
         card3 = new Card(7, Colour.YELLOW);
-        discard.addCard(card2);
+        player.discard.addCard(card2);
 
 
     }
@@ -82,7 +84,7 @@ public class PlayerTest {
 
     @Test
     public void playSelectedCard() throws InvalidMoveException, NoCardInPositionException {
-
+        discard.addCard(card2);
       //draw.takeTopCard());
         player.playSelectedCard(card);
         int expectedSize = 2;

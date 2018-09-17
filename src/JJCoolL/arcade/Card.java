@@ -9,9 +9,10 @@ package JJCoolL.arcade;
 public class Card
 {
     public Discard discard;
+
     private int cardNumber;
     private Colour cardColour;
-    private Hand hand;
+   // private Hand hand;
 
     public Card(int cardNumber , Colour cardColour) {
         this.cardNumber = cardNumber;

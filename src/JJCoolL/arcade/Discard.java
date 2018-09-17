@@ -11,7 +11,7 @@ import java.util.Stack;
 public class Discard {
     private static Stack<Card> discard;
     private Card card;
-    private Hand hand;
+   // private Hand hand;
 
     public Discard() {
 
@@ -32,11 +32,11 @@ public class Discard {
      * LM
      * @param removedCard
      */
-    // public Card playCardFromHand(Card removedCard) {
-    //   discard.push(removedCard);
-    // return removedCard;
+     public Card playCardFromHand(Card removedCard) {
+    discard.push(removedCard);
+     return removedCard;
 
-    //}
+    }
 
     /**
      * this method can be used to peak at the top of the stack (discard pile) and see the current card in play.

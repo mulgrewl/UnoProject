@@ -6,6 +6,7 @@ import JJCoolL.arcade.Exceptions.InvalidCommandException;
 import JJCoolL.arcade.Exceptions.InvalidMoveException;
 import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
 import JJCoolL.arcade.Exceptions.NoCardInPositionException;
+import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +20,10 @@ public class UnoGame implements TextGame {
     private Draw draw; //creating a new deck to draw from
     private Discard discard; // Takes played cards
     private ArrayList<Player> playerList; // creates array list to store players in
-    private Player currentPlayer;
-    private int currentPlayerNumber;
+    private Player currentPlayer; //Stores CurrentPlayer
+    private int currentPlayerNumber; //Stores currentPlayerNumber
 
     public UnoGame() {
-        //UnoGame unoGame = new UnoGame();
         draw = new Draw ();
         discard = new Discard ();
         this.playerList = new ArrayList<>(10);
@@ -50,8 +50,9 @@ public class UnoGame implements TextGame {
         }
     }
 
-    public void removePlayer(String name) {
-        this.playerList.remove(name); // removes player by name JT
+
+    public void removePlayer(int ArrayIndex) {
+        this.playerList.remove(ArrayIndex); // removes player by ArrayIndex position JT
     }
 
     public List<Player> getPlayers() {
@@ -73,20 +74,24 @@ public class UnoGame implements TextGame {
     }
 
     void startRound() {
-        //call the deck
-
+        //call the deck and adds 7 into each players hand plus puts one card into discard pile.
         for (int i=0; i < 7; i++){
             for (Player player: playerList) {
                 Card card = draw.takeTopCard();
                 player.getHand().addCard(card);
             }
         }
+        //Puts first card down
+        discard.addCard(draw.takeTopCard());
+    }
 
-        //discard.addCard(draw.takeTopCard());
+    void getPeekAtCard() {
+        System.out.println("Top card is " + discard.peakAtCard() ) ;
+
     }
 
     /**
-     * Current player to see own hand
+     * Current player to see cards in own hand
      * @return
      */
     Hand seeMyHand(int currentPlayerIndex) {
@@ -96,7 +101,7 @@ public class UnoGame implements TextGame {
     }
 
     /**
-     * Current player to see other players hand
+     * Current player to see selected players hand size.
      * @return
      */
 
@@ -117,69 +122,53 @@ public class UnoGame implements TextGame {
 
 
 
-    public void playSelectedCard(Card card) throws InvalidMoveException, NoCardInPositionException {
-       // int position = hand.indexOf(selectedCard);
-        // position to card conversion here
+    public void playSelectedCard(int position) throws InvalidMoveException, NoCardInPositionException {
+    currentPlayer = currentPlayer();
+    Hand currentHand = currentPlayer.getHand();
+    Card card = currentHand.getCardAtPosition(position);
 
         if (discard.canCardBePlayed(card) == true) {
-
-       // Player currentPlayer = getPlayerIndex(currentPlayerIndex);
-            // player.getHand()
+            currentPlayer = currentPlayer();
             currentPlayer.getHand().removeCard(card).discard.addCard(card);
 
         }
-    //    return null;
 
     }
-
 
     public Player getCurrentPlayer() {
-        // determines who's go it is next.
+
        return currentPlayer = playerList.get(currentPlayerNumber);
-       // get Player from the number in the array
+
 }
+    /**
+     * Method for moving to next player. Each time a player has put down a card or passed their turn, this method will need to be called to
+     * move to the next person in the player list.
+     */
+     void goToNextPlayer() {
+         currentPlayerNumber = (currentPlayerNumber + 1 + playerList.size()) % playerList.size();
+     }
 
 
-    //void goToNextPlayer(){
+     Player currentPlayer() {
+        return getCurrentPlayer();
+     }
 
-    // for(currentPlayer = 0; currentPlayer < getNumberOfPlayers(); currentPlayer++) {
-    // if (currentPlayer == getNumberOfPlayers()){
-    // currentPlayer = 0;
-    // continue;
-    // }
-    // currentPlayer++;
+    /**
+     * Method for pass. If current player is unable to play a card, they must pick up the top card from the draw pile.
+     */
+    void pass() {
+    currentPlayer = currentPlayer();
+        Card card = draw.takeTopCard();
+        Hand hand = currentPlayer.getHand();
+        hand.addCard(card);
 
-    // }
+            }
 
-    // }
-
-//    void goToNextPlayer(){
-//        while(currentPlayer < getNumberOfPlayers()) {
-//            for(currentPlayer = 0; currentPlayer < getNumberOfPlayers(); currentPlayer++){
-//                //currentPlayer++;
-//                System.out.println("" + currentPlayer);
-//            }
-//            if (currentPlayer == getNumberOfPlayers()){
-//                currentPlayer = 0;
-//
-//            }
-
-
-
-//    public Card playSelectedCard(Card card) throws InvalidMoveException {
-//        Player player;
-//        if(discard.canCardBePlayed(card) == true) {
-//            currentPlayer.getHand().removeCard(card).discard.addCard(card);
-//        }
-//        return card;
-//    }
-
-
-    public String winGame(Player name) {
-        /*  if (Player.handsize < 0 && Player.callUno)
-        System.out.println("Congratulations" + Player.getName) + "You've won this round!");*/
+/*    public String winGame(Player player) {
+         if (Player.this.hand.size() < 0)
+        System.out.println("Congratulations" + Player.getName() + "You've won this round!");
         return null;
-    }
+    }*/
 
     public String getScoreboard(){
         return null;
@@ -194,6 +183,11 @@ public class UnoGame implements TextGame {
     }
 
     public String getHelp(){
+        return null;
+    }
+
+    @Override
+    public String getGameName() {
         return null;
     }
 

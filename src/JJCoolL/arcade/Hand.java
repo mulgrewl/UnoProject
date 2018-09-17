@@ -34,7 +34,11 @@ public class Hand {
     }
 
     public Card removeCard(int position) throws NoCardInPositionException {
-        Card removedCard;
+         //int position = hand.indexOf(selectedCard);
+
+
+
+
         if (position < 0) {
             throw new NoCardInPositionException("no card at this position");
         }
@@ -42,15 +46,17 @@ public class Hand {
             throw new NoCardInPositionException("no card at this position");
 
         } else {
-            removedCard = this.hand.remove(position);
-            return removedCard;
-            //discard.addCard(removedCard);
-            // add to discard pile using addtopile method from Discard
+
+           Card newPosition = this.hand.remove(position);
+            return newPosition;
 
 
         }
     }
-
+    public Card getCardAtPosition(int index){
+      Card selectedCard =  hand.get(index);
+        return selectedCard;
+}
    /* public Colour getColourOfRemovedCard() {
         Card card;
         Colour colourOfRemovedCard = removeCard(position).getColour();

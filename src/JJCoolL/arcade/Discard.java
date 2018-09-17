@@ -1,5 +1,7 @@
 package JJCoolL.arcade;
 
+import JJCoolL.arcade.Exceptions.InvalidMoveException;
+
 import java.util.Stack;
 
 /**
@@ -9,6 +11,7 @@ import java.util.Stack;
 public class Discard {
     private static Stack<Card> discard;
     private Card card;
+    private Hand hand;
 
     public Discard() {
 
@@ -29,11 +32,11 @@ public class Discard {
      * LM
      * @param removedCard
      */
-    public Card playCardFromHand(Card removedCard) {
-        discard.push(removedCard);
-        return removedCard;
+   // public Card playCardFromHand(Card removedCard) {
+     //   discard.push(removedCard);
+       // return removedCard;
 
-    }
+    //}
 
     /**
      * this method will enable the Player class to see the topCard on the discard pile - the card that is currently in play. LM
@@ -54,17 +57,19 @@ public class Discard {
         int numberOfTopCard = peakAtCard().getNumber();
         return numberOfTopCard;
     }
-        public boolean canCardBePlayed(Card otherCard) {
+        public boolean canCardBePlayed(int position) throws InvalidMoveException {
            Card topCard = peakAtCard();
-            if( topCard.getColour() ==  otherCard.getColour()) {
+           Card cardAtPosition = hand.getCardAtPosition(position);
+            if( topCard.getColour() ==  cardAtPosition.getColour()) {
                 return true;
             }
-        else if ( topCard.getNumber() == otherCard.getNumber()){
+        else if ( topCard.getNumber() == cardAtPosition.getNumber()){
             return true;
             }
 
             else {
-                return false;
+        throw new InvalidMoveException();
+
             }
     }
 }

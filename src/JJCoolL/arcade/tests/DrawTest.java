@@ -22,9 +22,7 @@ public class DrawTest {
      */
     public DrawTest() {
      //   unoGame = new UnoGame();
-        draw = new Draw();
-        player = new Player("Joe");
-        player = new Player("Lucy");
+
     }
 
     /**
@@ -35,6 +33,9 @@ public class DrawTest {
 
     @Before
     public void setUp() {
+        draw = new Draw();
+        player = new Player("Joe");
+        player = new Player("Lucy");
     }
 
     /**

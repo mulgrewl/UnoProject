@@ -28,7 +28,7 @@ public class UnoGameTests {
     @Before
     public void setUp() {
         unoGame = new UnoGame();
-        player = new Player("");
+        player = new Player("Joe");
         discard = new Discard();
         card = new Card(9, Colour.YELLOW);
         card2 = new Card(8, Colour.YELLOW);
@@ -73,13 +73,25 @@ public class UnoGameTests {
     }
 
     @Test
-    public void playSelectedCard() throws InvalidMoveException, NoCardInPositionException {
+    public void playSelectedCard(Card card) throws InvalidMoveException, NoCardInPositionException {
         discard.addCard(card2);
         //draw.takeTopCard());
-        unoGame.playSelectedCard(card);
+        playSelectedCard(card3);
         int expectedSize = 2;
         int actualSize = player.getHand().numberOfCards();
         Assert.assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    public void currentPlayerTests() throws InsufficientFundsException {
+        unoGame.insertCoin();
+        unoGame.insertCoin();
+        unoGame.addPlayer("Joe");
+        unoGame.addPlayer("Trevor");
+        unoGame.getCurrentPlayer();
+
+
+
     }
 }
 //Awaiting update from Jardel

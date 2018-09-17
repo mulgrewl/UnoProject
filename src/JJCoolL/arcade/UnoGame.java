@@ -3,8 +3,9 @@ package JJCoolL.arcade;
 
 import JJCoolL.arcade.Exceptions.InsufficientFundsException;
 import JJCoolL.arcade.Exceptions.InvalidCommandException;
-//import JJCoolL.arcade.Exceptions.InvalidMoveException;
+import JJCoolL.arcade.Exceptions.InvalidMoveException;
 import JJCoolL.arcade.Exceptions.InvalidNumberOfPlayersException;
+import JJCoolL.arcade.Exceptions.NoCardInPositionException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,8 @@ public class UnoGame implements TextGame {
     private Draw draw; //creating a new deck to draw from
     private Discard discard; // Takes played cards
     private ArrayList<Player> playerList; // creates array list to store players in
-    private int currentPlayer;
+    private Player currentPlayer;
+    private int currentPlayerNumber;
 
     public UnoGame() {
         //UnoGame unoGame = new UnoGame();
@@ -121,36 +123,24 @@ public class UnoGame implements TextGame {
 
         if (discard.canCardBePlayed(card) == true) {
 
-        //Player currentPlayer = getPlayerIndex(currentPlayerIndex);
+       // Player currentPlayer = getPlayerIndex(currentPlayerIndex);
             // player.getHand()
-            currentPlayer.getHand().removeCard(card)discard.addCard(card);
+            currentPlayer.getHand().removeCard(card).discard.addCard(card);
 
         }
-        //return null;
+    //    return null;
 
     }
 
 
-    //remove card form position x in hand and add to discard pile
-    /*(    for (this.playerList) {
-
-
-            if (removeCard != discard.TopCard.colour || removeCard != discard.TopCard x )
-            {
-                throw new InvalidMoveException("You can't play that card! Choose another.");
-            }
-
-        else if (removeCard == discard.TopCard.colour || removeCard == discard.TopCard x)
-            {
-                discard.addCard(Card card);
-            }
-
-    Player getCurrentPlayer() {
+    public Player getCurrentPlayer() {
         // determines who's go it is next.
-        return playerList.get(currentPlayer);
-    }
+       return currentPlayer = playerList.get(currentPlayerNumber);
+       // get Player from the number in the array
+}
 
-    // void goToNextPlayer(){
+
+    //void goToNextPlayer(){
 
     // for(currentPlayer = 0; currentPlayer < getNumberOfPlayers(); currentPlayer++) {
     // if (currentPlayer == getNumberOfPlayers()){
@@ -163,29 +153,29 @@ public class UnoGame implements TextGame {
 
     // }
 
-    void goToNextPlayer(){
-        while(currentPlayer < getNumberOfPlayers()) {
-            for(currentPlayer = 0; currentPlayer < getNumberOfPlayers(); currentPlayer++){
-                //currentPlayer++;
-                System.out.println("" + currentPlayer);
-            }
-            if (currentPlayer == getNumberOfPlayers()){
-                currentPlayer = 0;
-
-            }
-        }
-    }
-
-    public Card playSelectedCard(Card card) throws InvalidMoveException {
-        Player player;
-        if(discard.canCardBePlayed(card) == true) {
-            player.getHand().removeCard(card).discard.addCard(card);
-        }
-        return card;
-    }
+//    void goToNextPlayer(){
+//        while(currentPlayer < getNumberOfPlayers()) {
+//            for(currentPlayer = 0; currentPlayer < getNumberOfPlayers(); currentPlayer++){
+//                //currentPlayer++;
+//                System.out.println("" + currentPlayer);
+//            }
+//            if (currentPlayer == getNumberOfPlayers()){
+//                currentPlayer = 0;
+//
+//            }
 
 
-    String winGame(Player name) {
+
+//    public Card playSelectedCard(Card card) throws InvalidMoveException {
+//        Player player;
+//        if(discard.canCardBePlayed(card) == true) {
+//            currentPlayer.getHand().removeCard(card).discard.addCard(card);
+//        }
+//        return card;
+//    }
+
+
+    public String winGame(Player name) {
         /*  if (Player.handsize < 0 && Player.callUno)
         System.out.println("Congratulations" + Player.getName) + "You've won this round!");*/
         return null;

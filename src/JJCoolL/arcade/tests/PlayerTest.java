@@ -82,15 +82,15 @@ public class PlayerTest {
         assertEquals(expectedSizes, actualSizes);
     }
 
-    @Test
-    public void playSelectedCard() throws InvalidMoveException, NoCardInPositionException {
-        discard.addCard(card2);
-      //draw.takeTopCard());
-        player.playSelectedCard(card);
-        int expectedSize = 2;
-        int actualSize = player.getHand().numberOfCards();
-        assertEquals(expectedSize, actualSize);
-
-    }
+//    @Test
+//    public void playSelectedCard() throws InvalidMoveException, NoCardInPositionException {
+//        discard.addCard(card2);
+//      //draw.takeTopCard());
+//        playSelectedCard(card);
+//        int expectedSize = 2;
+//        int actualSize = player.getHand().numberOfCards();
+//        assertEquals(expectedSize, actualSize);
+//
+//    }
 }
 
